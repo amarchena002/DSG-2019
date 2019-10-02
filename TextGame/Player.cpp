@@ -24,7 +24,7 @@ Player::~Player()
 
 void Player::moveUp()
 {
-	x = x - 1;
+	y = y - 1;
 }
 
 void Player::moveDown()

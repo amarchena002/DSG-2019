@@ -50,6 +50,8 @@ World::World(std::string nameFile)
 				inputFile >> data;
 				if (data == '?')
 					m_coins++;
+				if (data == '1')
+					//m_player1 = new Player(j,i);
 				m_cells.push_back(data);
 			}
 		//	inputFile >> data;

@@ -20,12 +20,6 @@ GameLogic::~GameLogic()
 
 void GameLogic::processInput()
 {
-	//if (!System::keyHit())
-		//return; //no keyboard event to be processed
-	
-	_getch();
-	while (System::keyHit())
-	{
 		char c = System::getNextKey();
 		switch (c)
 		{
@@ -78,7 +72,8 @@ void GameLogic::processInput()
 			//'Esc' key pressed. Exit the game
 			return;
 		}
-	}
+	
+	
 }
 
 bool GameLogic::gameHasEnded()
