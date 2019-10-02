@@ -8,6 +8,8 @@
 Player::Player(int x,int y)
 {
 	c_coins = 0;
+	c_x = x;
+	c_y = y;
 }
 
 

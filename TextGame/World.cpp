@@ -49,9 +49,17 @@ World::World(std::string nameFile)
 			{
 				inputFile >> data;
 				if (data == '?')
+				{
 					m_coins++;
+				}
 				if (data == '1')
-					//m_player1 = new Player(j,i);
+				{
+					m_player1 = Player(j, i);
+				}
+				if (data == '2')
+				{
+					m_player2 = Player(j, i);
+				}
 				m_cells.push_back(data);
 			}
 		//	inputFile >> data;
@@ -101,6 +109,17 @@ void World::changeCells(Player playerB, Player playerA, char ch)
 	if (playerA.getcoin() > playerB.getcoin())
 	{
 		m_coins = m_coins - 1;
+	}
+}
+
+Player World::getPlayer(char player)
+{
+	if (player == '1') {
+		return m_player1;
+	}
+	else
+	{
+		return m_player2;
 	}
 }
 

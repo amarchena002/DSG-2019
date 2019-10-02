@@ -26,4 +26,5 @@ public:
 	int getCoins();
 	char getCell(int x, int y);
 	void changeCells(Player playerB, Player playerA, char ch);
+	Player getPlayer(char player);
 };
