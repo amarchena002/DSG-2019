@@ -10,8 +10,6 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <istream>
-
-
 World::World(int x, int y, vector<char> vector)
 {
 	m_x = x;
@@ -33,10 +31,34 @@ World::World(std::string nameFile)
 	ifstream inputFile(nameFile, fstream::in);
 	if (inputFile.is_open())
 	{
-		for (int i = 0; i < 9; i++)
+		char data = ' ';
+		string size = "";
+		while (data != ',') 
+		{	
+			inputFile >> data;
+			if(data != ',')
+				size += data;
+		}
+		m_x += stoi(size);
+		size = "";
+		data = ' ';
+		while (data != ';')
+		{			
+			inputFile >> data;
+			if (data != ';')
+				size += data;
+		}
+		m_y += stoi(size);
+		data = ' ';
+		for (int i = 0; i < m_y; i++)
 		{
-			inputFile >> datos[i];
-			inputFile >> delimiter;
+			for (int j = 0; j < m_x; j++)
+			{
+				inputFile >> data;
+				m_cells.push_back(data);
+			}
+		//	inputFile >> data;
+		//	inputFile >> data;
 		}
 
 		inputFile.close();
@@ -56,13 +78,13 @@ void World::draw()
 	drawMaze();
 
 	//TODO: -write the points each player has
-	std::cout << "Player 1 : " + m_player1.getcoin();
+	std::cout << "Player 1 : " << m_player1.getcoin();
 	std::cout << "\n";
-	std::cout << "Player 2 : " + m_player2.getcoin();
+	std::cout << "Player 2 : " << m_player2.getcoin();
 	std::cout << "\n";
 	//TODO: -write the time elapsed since the beginning
 	//		-set the proper position/color
-	std::cout << m_timer.getElapsedTime() << "   ";
+	std::cout << "Time: " << m_timer.getElapsedTime() << "   ";
 }
 
 int World::getCoins()

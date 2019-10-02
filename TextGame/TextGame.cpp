@@ -10,32 +10,7 @@
 int main()
 {
 	vector<char> m_world = vector<char>();
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	m_world.push_back('#');
-	World world(5,5,m_world);
+	World world("inputfile.txt");
 	Player player1, player2;
 	GameLogic gameLogic(player1, player2, world);
 	world.draw();
