@@ -4,10 +4,10 @@ class Player
 {
 	int c_x;
 	int c_y;
-	int coins;
+	int c_coins;
 
 public:
-	Player();
+	Player(int x,int y);
 	~Player();
 
 	void moveUp();

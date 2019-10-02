@@ -4,7 +4,6 @@
 #include "System.h"
 #include "World.h"
 #include <stdio.h>
-#include <conio.h>
 GameLogic::GameLogic(Player& player1, Player& player2, World& world)
 	: m_player1(player1), m_player2(player2), m_world(world)
 {
