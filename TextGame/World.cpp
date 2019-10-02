@@ -10,15 +10,10 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <istream>
-World::World(int x, int y, vector<char> vector)
-{
-	m_x = x;
-	m_y = y;
-	m_cells = vector;
-}
 
 World::World(std::string nameFile)
 {
+	m_coins = 0;
 	System::hideCursor();
 
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
@@ -26,8 +21,6 @@ World::World(std::string nameFile)
 
 	//TODO: initalize everything else
 	//...
-	int datos[9];
-	char delimiter;
 	ifstream inputFile(nameFile, fstream::in);
 	if (inputFile.is_open())
 	{
@@ -55,6 +48,8 @@ World::World(std::string nameFile)
 			for (int j = 0; j < m_x; j++)
 			{
 				inputFile >> data;
+				if (data == '?')
+					m_coins++;
 				m_cells.push_back(data);
 			}
 		//	inputFile >> data;
@@ -126,4 +121,3 @@ void World::drawMaze()
 	std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
 //TODO: comprobar movimiento
-//TODO: cargar fichero

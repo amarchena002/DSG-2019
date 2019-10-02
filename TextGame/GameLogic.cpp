@@ -4,6 +4,7 @@
 #include "System.h"
 #include "World.h"
 #include <stdio.h>
+#include <conio.h>
 GameLogic::GameLogic(Player& player1, Player& player2, World& world)
 	: m_player1(player1), m_player2(player2), m_world(world)
 {
@@ -19,10 +20,10 @@ GameLogic::~GameLogic()
 
 void GameLogic::processInput()
 {
-	if (!System::keyHit())
-		return; //no keyboard event to be processed
-
-
+	//if (!System::keyHit())
+		//return; //no keyboard event to be processed
+	
+	_getch();
 	while (System::keyHit())
 	{
 		char c = System::getNextKey();
