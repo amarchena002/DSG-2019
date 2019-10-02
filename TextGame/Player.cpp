@@ -1,63 +1,57 @@
 #include "stdafx.h"
 #include "Player.h"
 
-int x;
-int y;
-int coins;
 
 //int position = 0; Hay que cargarlo desde el archivo
 
 
-Player::Player()
+Player::Player(int x,int y)
 {
-	
+	c_coins = 0;
 }
 
 
 Player::~Player()
 {
-	coins = 0;	// inicializado a 0
-	x = 0;		// lo tiene que coger desde el archivo
-	y = 0;
 }
 
 
 void Player::moveUp()
 {
-	x = x - 1;
+	c_y--;
 }
 
 void Player::moveDown()
 {
-	x = x + 1;
+	c_y++;
 }
 
 void Player::moveRight()
 {
-	y = y + 1;
+	c_x++; 
 }
 
 void Player::moveLeft()
 {
-	y = y - 1;
+	c_y--;
 }
 
 
 int Player::getX()
 {
-	return x;
+	return c_x;
 }
 
 int Player::getY() {
-	return y;
+	return c_y;
 }
 
 int Player::getcoin()
 {
-	return coins;
+	return c_coins;
 }
 
 void Player::addcoin()
 {
-	coins++;
+	c_coins++;
 }
