@@ -8,6 +8,7 @@ class Player
 
 public:
 	Player(int x,int y);
+	Player();
 	~Player();
 
 	void moveUp();

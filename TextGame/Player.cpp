@@ -12,6 +12,10 @@ Player::Player(int x,int y)
 	c_y = y;
 }
 
+Player::Player()
+{
+}
+
 
 Player::~Player()
 {

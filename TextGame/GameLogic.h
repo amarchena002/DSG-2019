@@ -15,5 +15,6 @@ public:
 
 	void processInput();
 	bool gameHasEnded();
+	World getWorld();
 };
 

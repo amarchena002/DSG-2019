@@ -27,42 +27,43 @@ void GameLogic::processInput()
 			//Do whatever needs to be done when 'a' is pressed
 			m_playerB = m_player2;
 			m_player2.moveLeft();
+			m_world.changeCells(m_playerB, m_player2, '2');
 			break;
 		case 's':
 			//Do whatever needs to be done when 's' is pressed
 			m_playerB = m_player2;
 			m_player2.moveDown();
-			m_world.changeCells(m_playerB, m_player2, 2);
+			m_world.changeCells(m_playerB, m_player2, '2');
 			break;
 		case 'd':
 			m_playerB = m_player2;
 			m_player2.moveRight();
-			m_world.changeCells(m_playerB, m_player2, 2);
+			m_world.changeCells(m_playerB, m_player2, '2');
 			break;
 		case 'w':
 			m_playerB = m_player2;
 			m_player2.moveUp();
-			m_world.changeCells(m_playerB, m_player2, 2);
+			m_world.changeCells(m_playerB, m_player2, '2');
 			break;
 		case '4':	
 			m_playerB = m_player1;
 			m_player1.moveLeft();
-			m_world.changeCells(m_playerB, m_player1, 1);
+			m_world.changeCells(m_playerB, m_player1, '1');
 			break;
 		case '2':
 			m_playerB = m_player1;
 			m_player1.moveDown();
-			m_world.changeCells(m_playerB, m_player1, 1);
+			m_world.changeCells(m_playerB, m_player1, '1');
 			break;
 		case '6':
 			m_playerB = m_player1;
 			m_player1.moveRight();
-			m_world.changeCells(m_playerB, m_player1, 1);
+			m_world.changeCells(m_playerB, m_player1, '1');
 			break;
 		case '8':
 			m_playerB = m_player1;
 			m_player1.moveUp();
-			m_world.changeCells(m_playerB, m_player1, 1);
+			m_world.changeCells(m_playerB, m_player1, '1');
 			break;
 		//...
 		//...
@@ -96,4 +97,9 @@ bool GameLogic::gameHasEnded()
 	{
 		return false;
 	}		
+}
+
+World GameLogic::getWorld()
+{
+	return m_world;
 }
