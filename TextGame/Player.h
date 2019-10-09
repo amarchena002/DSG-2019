@@ -7,7 +7,8 @@ class Player
 	int c_coins;
 
 public:
-	Player(int x,int y);
+	Player(int x, int y);
+	Player();
 	~Player();
 
 	void moveUp();
