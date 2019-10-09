@@ -14,10 +14,10 @@ int main()
 	Player player1 = world.getPlayer('1');
 	Player player2 = world.getPlayer('2');
 	GameLogic gameLogic(player1, player2, world);
-	world.draw();
+	gameLogic.getWorld().draw();
 	while (!gameLogic.gameHasEnded())
 	{
-		world.draw();
+		gameLogic.getWorld().draw();
 
 		gameLogic.processInput();
 	}

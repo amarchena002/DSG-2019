@@ -98,3 +98,8 @@ bool GameLogic::gameHasEnded()
 		return false;
 	}		
 }
+
+World GameLogic::getWorld()
+{
+	return m_world;
+}
