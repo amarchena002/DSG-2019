@@ -123,6 +123,19 @@ Player World::getPlayer(char player)
 	}
 }
 
+void World::addCoin(char player)
+{
+	if (player == '1') {
+		m_player1.addcoin();
+		m_coins--;
+	}
+	else
+	{
+		m_player2.addcoin();
+		m_coins--;
+	}
+}
+
 
 void World::drawMaze()
 {

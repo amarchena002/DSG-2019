@@ -39,7 +39,7 @@ void Player::moveRight()
 
 void Player::moveLeft()
 {
-	c_y--;
+	c_x--;
 }
 
 
