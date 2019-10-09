@@ -5,7 +5,7 @@
 #include "World.h"
 #include "GameLogic.h"
 #include <Vector>
-
+#include <iostream>
 
 int main()
 {
@@ -17,10 +17,12 @@ int main()
 	gameLogic.getWorld().draw();
 	while (!gameLogic.gameHasEnded())
 	{
+		gameLogic.processInput();
 		gameLogic.getWorld().draw();
 
-		gameLogic.processInput();
+
 	}
+	cin.get();
 
     return 0;
 }

@@ -16,5 +16,6 @@ public:
 	void processInput();
 	bool gameHasEnded();
 	World getWorld();
+	bool moveAllowed(char player,char ch);
 };
 

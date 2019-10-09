@@ -26,44 +26,68 @@ void GameLogic::processInput()
 		case 'a':
 			//Do whatever needs to be done when 'a' is pressed
 			m_playerB = m_player2;
-			m_player2.moveLeft();
-			m_world.changeCells(m_playerB, m_player2, '2');
+			if (moveAllowed('2', 'l'))
+			{
+				m_player2.moveLeft();
+				m_world.changeCells(m_playerB, m_player2, '2');
+			}
 			break;
 		case 's':
 			//Do whatever needs to be done when 's' is pressed
 			m_playerB = m_player2;
-			m_player2.moveDown();
-			m_world.changeCells(m_playerB, m_player2, '2');
+			if (moveAllowed('2', 'd'))
+			{
+				m_player2.moveDown();
+				m_world.changeCells(m_playerB, m_player2, '2');
+			}
 			break;
 		case 'd':
 			m_playerB = m_player2;
-			m_player2.moveRight();
-			m_world.changeCells(m_playerB, m_player2, '2');
+			if (moveAllowed('2', 'r'))
+			{
+				m_player2.moveRight();
+				m_world.changeCells(m_playerB, m_player2, '2');
+			}
 			break;
 		case 'w':
 			m_playerB = m_player2;
-			m_player2.moveUp();
-			m_world.changeCells(m_playerB, m_player2, '2');
+			if (moveAllowed('2', 'u'))
+			{
+				m_player2.moveUp();
+				m_world.changeCells(m_playerB, m_player2, '2');
+			}
 			break;
-		case '4':	
+		case '4':
 			m_playerB = m_player1;
-			m_player1.moveLeft();
-			m_world.changeCells(m_playerB, m_player1, '1');
+			if (moveAllowed('1', 'l'))
+			{
+				m_player1.moveLeft();
+				m_world.changeCells(m_playerB, m_player1, '1');
+			}
 			break;
 		case '2':
 			m_playerB = m_player1;
-			m_player1.moveDown();
-			m_world.changeCells(m_playerB, m_player1, '1');
+			if (moveAllowed('1', 'd'))
+			{
+				m_player1.moveDown();
+				m_world.changeCells(m_playerB, m_player1, '1');
+			}
 			break;
 		case '6':
 			m_playerB = m_player1;
-			m_player1.moveRight();
+			if (moveAllowed('1', 'r'))
+			{
+				m_player1.moveRight();
 			m_world.changeCells(m_playerB, m_player1, '1');
+			}
 			break;
 		case '8':
 			m_playerB = m_player1;
-			m_player1.moveUp();
-			m_world.changeCells(m_playerB, m_player1, '1');
+			if (moveAllowed('1', 'u'))
+			{
+				m_player1.moveUp();
+				m_world.changeCells(m_playerB, m_player1, '1');
+			}
 			break;
 		//...
 		//...
@@ -80,11 +104,11 @@ bool GameLogic::gameHasEnded()
 {
 	if (m_world.getCoins() == 0)
 	{
-		if (m_player1.getcoin() > m_player2.getcoin())
+		if (m_world.getPlayer('1').getcoin() > m_world.getPlayer('2').getcoin())
 		{
 			std::cout << "Winner player 1";
 		}
-		else if (m_player1.getcoin() == m_player2.getcoin())
+		else if (m_world.getPlayer('1').getcoin() == m_world.getPlayer('2').getcoin())
 		{
 			std::cout << "Tie";
 		}
@@ -103,3 +127,79 @@ World GameLogic::getWorld()
 {
 	return m_world;
 }
+
+bool GameLogic::moveAllowed(char player,char ch)
+{
+	switch (ch)
+	{
+	case 'u':
+		if (m_world.getCell(m_playerB.getX(), m_playerB.getY() - 1) == '#' 
+			|| m_world.getCell(m_playerB.getX(), m_playerB.getY() - 1) == '1' 
+			|| m_world.getCell(m_playerB.getX(), m_playerB.getY() - 1) == '2')
+		{
+			return false;
+		}
+		else if (m_world.getCell(m_playerB.getX(), m_playerB.getY() - 1) == '?')
+		{
+			m_world.addCoin(player);
+			return true;
+		}
+		else
+		{
+			return true;
+		}
+		break;
+	case 'd':
+		if (m_world.getCell(m_playerB.getX(), m_playerB.getY() + 1) == '#'
+			|| m_world.getCell(m_playerB.getX(), m_playerB.getY() + 1) == '1'
+			|| m_world.getCell(m_playerB.getX(), m_playerB.getY() + 1) == '2')
+		{
+			return false;
+		}
+		else if (m_world.getCell(m_playerB.getX(), m_playerB.getY() + 1) == '?')
+		{
+			m_world.addCoin(player);
+			return true;
+		}
+		else
+		{
+			return true;
+		}
+		break;
+	case 'l':
+			if (m_world.getCell(m_playerB.getX() - 1, m_playerB.getY() ) == '#'
+				|| m_world.getCell(m_playerB.getX() - 1, m_playerB.getY()) == '1'
+				|| m_world.getCell(m_playerB.getX() - 1, m_playerB.getY()) == '2')
+			{
+				return false;
+			}
+			else if (m_world.getCell(m_playerB.getX() - 1, m_playerB.getY()) == '?')
+			{
+				m_world.addCoin(player);
+				return true;
+			}
+			else
+			{
+				return true;
+			}
+			break;
+	case 'r':
+				if (m_world.getCell(m_playerB.getX() + 1, m_playerB.getY() ) == '#'
+					|| m_world.getCell(m_playerB.getX() + 1, m_playerB.getY()) == '1'
+					|| m_world.getCell(m_playerB.getX() + 1, m_playerB.getY()) == '2')
+				{
+					return false;
+				}
+				else if (m_world.getCell(m_playerB.getX() + 1, m_playerB.getY()) == '?')
+				{
+					m_world.addCoin(player);
+					return true;
+				}
+				else
+				{
+					return true;
+				}
+		break;
+	}
+}
+
