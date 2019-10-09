@@ -11,6 +11,39 @@
 #include <stdio.h>
 #include <istream>
 
+World::World(int x, int y, vector<char> vector)
+{
+	m_x = x;
+	m_y = y;
+	m_cells = vector;
+	m_coins = 0;
+
+	//initialize the timer. We want to display the time elapsed since the game began in draw()
+	m_timer.start();
+
+	//TODO: initalize everything else
+	//...
+	for(int i = 0; i < m_y ; i++)
+	{ 
+			for (int j = 0; j < m_x; j++)
+			{
+				if (vector[i*m_y + j] == '?')
+				{
+					m_coins++;
+				}
+				if (vector[i*m_y + j] == '1')
+				{
+					m_player1 = Player(j,i);
+				}
+				if (vector[i*m_y + j] == '2')
+				{
+					m_player2 = Player(j, i);
+				}
+			}
+	}
+
+}
+
 World::World(std::string nameFile)
 {
 	m_coins = 0;

@@ -133,13 +133,13 @@ bool GameLogic::moveAllowed(char player,char ch)
 	switch (ch)
 	{
 	case 'u':
-		if (m_world.getCell(m_playerB.getX(), m_playerB.getY() - 1) == '#' 
-			|| m_world.getCell(m_playerB.getX(), m_playerB.getY() - 1) == '1' 
-			|| m_world.getCell(m_playerB.getX(), m_playerB.getY() - 1) == '2')
+		if (m_world.getCell(m_world.getPlayer(player).getX(), m_world.getPlayer(player).getY() - 1) == '#'
+			|| m_world.getCell(m_world.getPlayer(player).getX(), m_world.getPlayer(player).getY() - 1) == '1'
+			|| m_world.getCell(m_world.getPlayer(player).getX(), m_world.getPlayer(player).getY() - 1) == '2')
 		{
 			return false;
 		}
-		else if (m_world.getCell(m_playerB.getX(), m_playerB.getY() - 1) == '?')
+		else if (m_world.getCell(m_world.getPlayer(player).getX(), m_world.getPlayer(player).getY() - 1) == '?')
 		{
 			m_world.addCoin(player);
 			return true;
@@ -150,13 +150,13 @@ bool GameLogic::moveAllowed(char player,char ch)
 		}
 		break;
 	case 'd':
-		if (m_world.getCell(m_playerB.getX(), m_playerB.getY() + 1) == '#'
-			|| m_world.getCell(m_playerB.getX(), m_playerB.getY() + 1) == '1'
-			|| m_world.getCell(m_playerB.getX(), m_playerB.getY() + 1) == '2')
+		if (m_world.getCell(m_world.getPlayer(player).getX(), m_world.getPlayer(player).getY() + 1) == '#'
+			|| m_world.getCell(m_world.getPlayer(player).getX(), m_world.getPlayer(player).getY() + 1) == '1'
+			|| m_world.getCell(m_world.getPlayer(player).getX(), m_world.getPlayer(player).getY() + 1) == '2')
 		{
 			return false;
 		}
-		else if (m_world.getCell(m_playerB.getX(), m_playerB.getY() + 1) == '?')
+		else if (m_world.getCell(m_world.getPlayer(player).getX(), m_world.getPlayer(player).getY() + 1) == '?')
 		{
 			m_world.addCoin(player);
 			return true;
@@ -167,13 +167,13 @@ bool GameLogic::moveAllowed(char player,char ch)
 		}
 		break;
 	case 'l':
-			if (m_world.getCell(m_playerB.getX() - 1, m_playerB.getY() ) == '#'
-				|| m_world.getCell(m_playerB.getX() - 1, m_playerB.getY()) == '1'
-				|| m_world.getCell(m_playerB.getX() - 1, m_playerB.getY()) == '2')
+			if (m_world.getCell(m_world.getPlayer(player).getX() - 1, m_world.getPlayer(player).getY() ) == '#'
+				|| m_world.getCell(m_world.getPlayer(player).getX() - 1, m_world.getPlayer(player).getY()) == '1'
+				|| m_world.getCell(m_world.getPlayer(player).getX() - 1, m_world.getPlayer(player).getY()) == '2')
 			{
 				return false;
 			}
-			else if (m_world.getCell(m_playerB.getX() - 1, m_playerB.getY()) == '?')
+			else if (m_world.getCell(m_world.getPlayer(player).getX() - 1, m_world.getPlayer(player).getY()) == '?')
 			{
 				m_world.addCoin(player);
 				return true;
@@ -184,13 +184,13 @@ bool GameLogic::moveAllowed(char player,char ch)
 			}
 			break;
 	case 'r':
-				if (m_world.getCell(m_playerB.getX() + 1, m_playerB.getY() ) == '#'
-					|| m_world.getCell(m_playerB.getX() + 1, m_playerB.getY()) == '1'
-					|| m_world.getCell(m_playerB.getX() + 1, m_playerB.getY()) == '2')
+				if (m_world.getCell(m_world.getPlayer(player).getX() + 1, m_world.getPlayer(player).getY() ) == '#'
+					|| m_world.getCell(m_world.getPlayer(player).getX() + 1, m_world.getPlayer(player).getY()) == '1'
+					|| m_world.getCell(m_world.getPlayer(player).getX() + 1, m_world.getPlayer(player).getY()) == '2')
 				{
 					return false;
 				}
-				else if (m_world.getCell(m_playerB.getX() + 1, m_playerB.getY()) == '?')
+				else if (m_world.getCell(m_world.getPlayer(player).getX() + 1, m_world.getPlayer(player).getY()) == '?')
 				{
 					m_world.addCoin(player);
 					return true;
