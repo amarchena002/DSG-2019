@@ -137,11 +137,19 @@ char World::getCell(int x, int y)
 
 void World::changeCells(Player playerB, Player playerA, char ch)
 {
-	m_cells[playerB.getY()*m_y + playerB.getX()] = ' ';
+	m_cells[playerB.getY()*m_y + playerB.getX()] = '_';
 	m_cells[playerA.getY()*m_y + playerA.getX()] = ch;
 	if (playerA.getcoin() > playerB.getcoin())
 	{
 		m_coins = m_coins - 1;
+	}
+	if (ch == '1')
+	{
+		m_player1 = playerA;
+	}
+	else
+	{
+		m_player2 = playerA;
 	}
 }
 
