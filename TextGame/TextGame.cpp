@@ -7,6 +7,7 @@
 #include <Vector>
 #include <iostream>
 
+
 int main()
 {
 	vector<char> m_world = vector<char>();
@@ -19,8 +20,6 @@ int main()
 	{
 		gameLogic.processInput();
 		gameLogic.getWorld().draw();
-
-
 	}
 	cin.get();
 

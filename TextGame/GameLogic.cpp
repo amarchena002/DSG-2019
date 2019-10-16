@@ -4,12 +4,19 @@
 #include "System.h"
 #include "World.h"
 #include <stdio.h>
+
 GameLogic::GameLogic(Player& player1, Player& player2, World& world)
 	: m_player1(player1), m_player2(player2), m_world(world)
 {
+	SoundManager* pSoundManager = SoundManager::getInstance();
+	pSoundManager->load("../snd/soundtrack-01.wav");
+	pSoundManager->load("../snd/sound-coin.wav");
+	pSoundManager->load("../snd/sound-game-over.wav");
+	pSoundManager->play("../snd/soundtrack-01.wav");
 	m_world = world;
 	m_player1 = player1;
 	m_player2 = player2;
+	m_soundManager = pSoundManager;
 }
 
 
@@ -19,6 +26,7 @@ GameLogic::~GameLogic()
 
 void GameLogic::processInput()
 {
+		
 		char c = System::getNextKey();
 		switch (c)
 		{
@@ -113,7 +121,11 @@ bool GameLogic::gameHasEnded()
 			std::cout << "Tie";
 		}
 		else
+		{
 			std::cout << "Winner player2";
+		}
+		m_soundManager->stop("../snd/soundtrack-01.wav");
+		m_soundManager->play("../snd/sound-game-over.wav");
 		return true;
 	}
 		//TODO: We need to check it the game has ended	
@@ -144,10 +156,12 @@ bool GameLogic::moveAllowed(char player,char ch)
 			if (player == '1')
 			{
 				m_player1.addcoin();
+				m_soundManager->play("../snd/sound-coin.wav");
 			}
 			else
 			{
 				m_player2.addcoin();
+				m_soundManager->play("../snd/sound-coin.wav");
 			}
 			return true;
 		}
@@ -168,10 +182,12 @@ bool GameLogic::moveAllowed(char player,char ch)
 			if (player == '1')
 			{
 				m_player1.addcoin();
+				m_soundManager->play("../snd/sound-coin.wav");
 			}
 			else
 			{
 				m_player2.addcoin();
+				m_soundManager->play("../snd/sound-coin.wav");
 			}
 			return true;
 		}
@@ -192,10 +208,12 @@ bool GameLogic::moveAllowed(char player,char ch)
 				if (player == '1')
 				{
 					m_player1.addcoin();
+					m_soundManager->play("../snd/sound-coin.wav");
 				}
 				else
 				{
 					m_player2.addcoin();
+					m_soundManager->play("../snd/sound-coin.wav");
 				}
 				return true;
 			}
@@ -216,10 +234,12 @@ bool GameLogic::moveAllowed(char player,char ch)
 					if (player == '1')
 					{
 						m_player1.addcoin();
+						m_soundManager->play("../snd/sound-coin.wav");
 					}
 					else
 					{
 						m_player2.addcoin();
+						m_soundManager->play("../snd/sound-coin.wav");
 					}
 					return true;
 				}
@@ -229,5 +249,7 @@ bool GameLogic::moveAllowed(char player,char ch)
 				}
 		break;
 	}
+
 }
+
 
