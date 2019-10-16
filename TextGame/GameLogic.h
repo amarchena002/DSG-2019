@@ -2,7 +2,7 @@
 
 #include "Player.h"
 #include "World.h"
-#include "../SoundManager/SoundManager.h"
+#include "../SoundManager-master/SoundManager/SoundManager.h"
 
 class GameLogic
 {
