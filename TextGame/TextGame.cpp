@@ -21,6 +21,7 @@ int main()
 		gameLogic.processInput();
 		gameLogic.getWorld().draw();
 	}
+	std::cout << "\r\n" <<"GAME OVER, Press Enter to exit";
 	cin.get();
 
     return 0;

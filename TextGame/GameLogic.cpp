@@ -111,6 +111,7 @@ void GameLogic::processInput()
 
 bool GameLogic::gameHasEnded()
 {
+
 	if (m_world.getCoins() == 0)
 	{
 		if (m_world.getPlayer('1').getcoin() > m_world.getPlayer('2').getcoin())

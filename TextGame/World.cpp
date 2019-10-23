@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <istream>
+#include <windows.h>
 
 World::World(int x, int y, vector<char> vector)
 {
@@ -114,7 +115,7 @@ World::~World()
 void World::draw()
 {
 	drawMaze();
-
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE |FOREGROUND_GREEN|FOREGROUND_INTENSITY| COLOR_BACKGROUND);
 	//TODO: -write the points each player has
 	std::cout << "Player 1 : " << m_player1.getcoin();
 	std::cout << "\n";
@@ -181,13 +182,33 @@ void World::addCoin(char player)
 void World::drawMaze()
 {
 	System::clear();
-
 	//TODO: -draw the maze: walls and each of the cells
 	for (int i = 0; i < m_y; i++)
 	{
 		for (int j = 0; j < m_x; j++)
 		{
+			if (m_cells.at(i*m_x + j) == '#')
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | BACKGROUND_INTENSITY);
+			}
+			else if (m_cells.at(i*m_x + j) == '_')
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
+			}
+			else if (m_cells.at(i*m_x + j) == '1')
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN |FOREGROUND_INTENSITY| BACKGROUND_INTENSITY);
+			}
+			else if (m_cells.at(i*m_x + j) == '2')
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE |FOREGROUND_RED|FOREGROUND_INTENSITY| BACKGROUND_INTENSITY);
+			}
+			else
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY);
+			}
 			std::cout << m_cells.at(i*m_x + j);
+			
 		}
 		std::cout << "\n";
 	}
