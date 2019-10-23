@@ -9,14 +9,15 @@ GameLogic::GameLogic(Player& player1, Player& player2, World& world)
 	: m_player1(player1), m_player2(player2), m_world(world)
 {
 	SoundManager* pSoundManager = SoundManager::getInstance();
-	pSoundManager->load("../snd/soundtrack-01.wav");
-	pSoundManager->load("../snd/sound-coin.wav");
-	pSoundManager->load("../snd/sound-game-over.wav");
-	pSoundManager->play("../snd/soundtrack-01.wav");
+	m_soundManager = pSoundManager;
+	m_soundManager->load("../snd/soundtrack-01.wav");
+	m_soundManager->load("../snd/sound-coin.wav");
+	m_soundManager->load("../snd/sound-game-over.wav");
+	m_soundManager->play("../snd/soundtrack-01.wav");
 	m_world = world;
 	m_player1 = player1;
 	m_player2 = player2;
-	m_soundManager = pSoundManager;
+	
 }
 
 

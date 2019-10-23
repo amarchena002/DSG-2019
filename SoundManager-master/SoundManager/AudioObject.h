@@ -8,7 +8,7 @@ using namespace std;
 class AudioObject
 {
 	unsigned int m_buffer;
-
+	unsigned int soundSource;
 	bool m_bLoaded = false;
 	string m_sourceFilename;
 

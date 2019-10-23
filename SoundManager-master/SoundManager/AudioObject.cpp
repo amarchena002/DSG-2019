@@ -79,7 +79,7 @@ void AudioObject::play(float gain, float x, float y, float z, float dirX, float 
 	if (SoundManager::getInstance()->getVerbose())
 		cout << "Playing audio: " << m_sourceFilename << "\n";
 
-	unsigned int soundSource = SoundManager::getInstance()->getSoundSource();
+	soundSource = SoundManager::getInstance()->getSoundSource();
 
 	//create audio object and set basic properties
 	alSourcef(soundSource, AL_PITCH, 1);
@@ -96,7 +96,5 @@ void AudioObject::play(float gain, float x, float y, float z, float dirX, float 
 
 void AudioObject::stop()
 {
-	
-	unsigned int soundSource = SoundManager::getInstance()->getSoundSource();
 	alSourceStop(soundSource);
 }
